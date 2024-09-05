@@ -7,8 +7,9 @@
     	<li class="nav-item" >
             <a class="nav-link active">회원 관리</a>
         </li>
-        
-		
+    	<li class="nav-item" >
+            <a class="nav-link" href="${pageContext.request.contextPath}/adminManagement/chat">채팅 문의</a>
+        </li>
     </ul>
 </nav>
 
