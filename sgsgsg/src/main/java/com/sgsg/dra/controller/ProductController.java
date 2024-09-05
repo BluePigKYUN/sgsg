@@ -93,30 +93,38 @@ public class ProductController {
 	@GetMapping("details")
 	public String productDetail(@RequestParam Long productNum, Model model, HttpSession session) {
 	    try {
+	        // 상품 정보 조회
 	        Product dto = service.findById(productNum);
 	        if (dto == null) {
 	            return "redirect:/home";
 	        }
+	        
+	        // 상품 파일(이미지) 목록 조회
 	        List<Product> listFile = service.listProductFile(productNum);
+	        
+	        // 상품 옵션 목록 조회
 	        List<Product> listOption = service.listProductOption(productNum);
+	        
 	        List<Product> listOptionDetail = null;
-	        if (listOption.size() > 0) {
+	        if (listOption != null && !listOption.isEmpty()) {
 	            listOptionDetail = service.listOptionDetail(listOption.get(0).getOptionNum());
 	        }
+	        
+	        // 재고 정보 조회
 	        Map<String, Object> map = new HashMap<>();
 	        map.put("productNum", dto.getProductNum());
 	        List<Product> listStock = service.listOptionDetailStock(map);
+	        
 	        if (dto.getOptionCount() == 0) {
 	            // 단품 상품인 경우
 	            if (listStock != null && !listStock.isEmpty()) {
 	                dto.setStockNum(listStock.get(0).getStockNum());
 	                dto.setTotalStock(listStock.get(0).getTotalStock());
 	            }
-	        } else if (dto.getOptionCount() > 0) {
-	            // 옵션이 있는 상품인 경우
+	        } else if (dto.getOptionCount() > 0 && listOptionDetail != null && listStock != null) {
 	            for (Product vo : listOptionDetail) {
 	                for (Product ps : listStock) {
-	                    if (vo.getDetailNum() == ps.getDetailNum()) {
+	                    if (vo.getDetailNum().equals(ps.getDetailNum())) {
 	                        vo.setStockNum(ps.getStockNum());
 	                        vo.setTotalStock(ps.getTotalStock());
 	                        break;
@@ -124,34 +132,36 @@ public class ProductController {
 	                }
 	            }
 	        }
-	        // 리뷰 수와 평균 평점만 가져오기
+	       
+	        // 리뷰 수와 평균 평점 조회
 	        int reviewCount = reviewService.countReviews(productNum);
 	        double avgScore = reviewService.getAvgScore(productNum);
-
+	        
 	        // 북마크 관련 정보 추가
 	        int totalBookmarkCount = wishlistService.getProductWishlistCount(productNum);
-	        model.addAttribute("totalBookmarkCount", totalBookmarkCount);
-
+	        
 	        // 로그인한 사용자의 북마크 상태 확인
 	        SessionInfo sessionInfo = (SessionInfo) session.getAttribute("member");
 	        boolean isBookmarked = false;
 	        if (sessionInfo != null) {
 	            isBookmarked = wishlistService.isInWishlist(sessionInfo.getUserId(), productNum);
 	        }
+	        
+	        // Model에 데이터 추가
 	        model.addAttribute("isBookmarked", isBookmarked);
-
 	        model.addAttribute("dto", dto);
 	        model.addAttribute("listFile", listFile);
 	        model.addAttribute("listOption", listOption);
 	        model.addAttribute("listOptionDetail", listOptionDetail);
 	        model.addAttribute("reviewCount", reviewCount);
 	        model.addAttribute("avgScore", avgScore);
+	        model.addAttribute("totalBookmarkCount", totalBookmarkCount);
+	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
 	    return ".product.details";
 	}
-
 	@GetMapping("reviews")
 	@ResponseBody
 	public Map<String, Object> getReviews(
@@ -202,13 +212,15 @@ public class ProductController {
 	}
 
 	@GetMapping("category")
-	public String categoryView(@RequestParam Long categoryNum, @RequestParam(required = false) Long subCategoryNum,
+	public String categoryView(@RequestParam Long categoryNum, 
+			@RequestParam(required = false) Long subCategoryNum,
 	        Model model) {
 	    // 현재 카테고리 정보 가져오기
 	    Product category = service.getCategoryById(categoryNum);
 	    if (category == null) {
 	        // 카테고리가 존재하지 않을 경우 에러 페이지로 리다이렉트
-	        return "redirect:/error/noAccess";
+	    	return "redirect:/error";
+
 	    }
 
 	    // 메인 카테고리 목록 가져오기

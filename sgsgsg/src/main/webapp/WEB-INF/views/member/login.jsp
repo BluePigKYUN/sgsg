@@ -188,9 +188,4 @@ $(document).ready(function() {
         <button class="login__btn" type="button" onclick="sendLogin();">로그인</button>
     </form>
 
-    <div class="divider">또는</div>
-
-    <button class="social-login__btn kakao__btn"><span class="icon">K</span>카카오 로그인</button>
-    <button class="social-login__btn google__btn"><span class="icon">G</span>구글 로그인</button>
-    <button class="social-login__btn naver__btn"><span class="icon">N</span>네이버 로그인</button>
 </div>
