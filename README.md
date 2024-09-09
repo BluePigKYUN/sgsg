@@ -122,7 +122,7 @@
 
 ## 📊 ERD
 
-[추가예정]
+![erd_sgsg](https://github.com/user-attachments/assets/8e671e1f-eedc-46df-851b-de1cd66a5936)
 
 ## 📷 스크린샷
 
