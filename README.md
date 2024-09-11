@@ -127,10 +127,15 @@
 ## 📷 스크린샷
 
 **쇼핑몰 화면**
+
 ![사용자메인화면](https://github.com/user-attachments/assets/f0f5b80e-5acf-4072-88e9-974ca113f112)
+
 **관리자 대시보드**
+
 ![관리자대시보드](https://github.com/user-attachments/assets/65c7e7e7-a1be-46a5-813b-477e5d53e997)
 **관리자 상품목록**
+
 ![관리자상품리스트](https://github.com/user-attachments/assets/0a442b2a-0aed-45d7-92cb-cd7f99e7b1b4)
+
 **상품등록 화면**
 ![관리자상품등록](https://github.com/user-attachments/assets/fec1dad6-ef05-4aa2-b8a6-c6a93a29a422)
