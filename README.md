@@ -125,8 +125,5 @@
 ![erd_sgsg](https://github.com/user-attachments/assets/8e671e1f-eedc-46df-851b-de1cd66a5936)
 
 ## 📷 스크린샷
-![lion-cheer_thumb_300](https://github.com/user-attachments/assets/7675e6a8-ba44-47c5-8517-d852b5cfcbb8)
-![lion-cheer_thumb_300](https://github.com/user-attachments/assets/7675e6a8-ba44-47c5-8517-d852b5cfcbb8)
-![lion-cheer_thumb_300](https://github.com/user-attachments/assets/7675e6a8-ba44-47c5-8517-d852b5cfcbb8)
 
 [추가예정]
