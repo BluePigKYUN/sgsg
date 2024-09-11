@@ -129,7 +129,7 @@
 <span>쇼핑몰 메인 화면</span>
 ![사용자메인화면](https://github.com/user-attachments/assets/f0f5b80e-5acf-4072-88e9-974ca113f112)
 <span>쇼핑몰 메인 화면</span>
-<p>![관리자대시보드](https://github.com/user-attachments/assets/65c7e7e7-a1be-46a5-813b-477e5d53e997)</p>
+![관리자대시보드](https://github.com/user-attachments/assets/65c7e7e7-a1be-46a5-813b-477e5d53e997)
 <span>쇼핑몰 메인 화면</span>
 ![관리자상품리스트](https://github.com/user-attachments/assets/0a442b2a-0aed-45d7-92cb-cd7f99e7b1b4)
 <span>쇼핑몰 메인 화면</span>
